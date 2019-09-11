@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let t of todos" (click)="toggle(t)" [class.fertig]="t.done">
+    {{t.task}} {{t.done}} <button (click)="delete(t)">löschen</button>
+  </li>
+</ul>
+<input [(ngModel)]="newTodo.task"><button (click)="save()">save</button>
+<select [(ngModel)]="newTodo.category " class="form-control ">
+  <option *ngFor="let cat of categories " [ngValue]="cat ">{{cat.label}}</option>
+</select>

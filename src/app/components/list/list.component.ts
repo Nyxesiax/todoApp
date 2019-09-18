@@ -9,17 +9,24 @@ import {Categories} from '../../model/Categories';
 })
 export class ListComponent implements OnInit {
   newTodo: Todo;
- /* categories: Categories[] = [];
-  arbeit: Categories = new Categories('Arbeit');
-  privat: Categories = new Categories('Privat');
-  hobby: Categories = new Categories('Hobby');
-  */
-todos: Todo[] = [];
+  /* categories: Categories[] = [];
+   arbeit: Categories = new Categories('Arbeit');
+   privat: Categories = new Categories('Privat');
+   hobby: Categories = new Categories('Hobby');
+   */
+  todos: Todo[] = [];
+  suchtext = '';
+
   constructor() {
     this.newTodo = new Todo('');
   }
 
   ngOnInit() {
+  }
+
+  get todosGefiltert(): Todo[] {
+    this.suchtext = this.suchtext.toLowerCase();
+    return this.todos.filter(t => t.task.toLowerCase().includes(this.suchtext));
   }
 
   toggle(todo: Todo) {

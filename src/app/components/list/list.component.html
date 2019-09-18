@@ -1,9 +1,27 @@
-<ul>
-  <li *ngFor="let t of todos" (click)="toggle(t)" [class.fertig]="t.done">
-    {{t.task}} {{t.done}} <button (click)="delete(t)">löschen</button>
-  </li>
-</ul>
-<input [(ngModel)]="newTodo.task"><button (click)="save()">save</button>
-<select [(ngModel)]="newTodo.category " class="form-control ">
+<input type="text" [(ngModel)]="suchtext">
+<table class="table table-dark">
+  <tr>
+    <th>Todo</th>
+    <th>Delete</th>
+  </tr>
+  <tr *ngFor="let t of todosGefiltert" (click)="toggle(t)" [class.fertig]="t.done">
+    <td>{{t.task}}</td>
+    <td>
+      <button class="btn btn-danger" (click)="delete(t)">
+      <i class="material-icons">
+      delete
+    </i>
+    </button>
+    </td>
+  </tr>
+</table>
+<input [(ngModel)]="newTodo.task">
+<button class="btn btn-success" (click)="save()">
+<i class="material-icons">
+  save
+</i>
+</button>
+<!--<select [(ngModel)]="newTodo.category " class="form-control ">
   <option *ngFor="let cat of categories " [ngValue]="cat ">{{cat.label}}</option>
-</select>
+</select>-->
+
